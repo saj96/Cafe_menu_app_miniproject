@@ -1,6 +1,4 @@
 import main_menu
-from unittest.mock import Mock
-from unittest.mock import patch
 
 def orders():
     print("-Orders menu options- Enter 0 to return to Main Menu, Enter 1 to see Orders, Enter 2 to create new Orders, Enter 3 to update an existing Order's Status, Enter 4 to update an existing Order and 5 to delete an Order")
