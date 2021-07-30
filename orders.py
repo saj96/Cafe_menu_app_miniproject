@@ -24,6 +24,16 @@ def orders():
         order['phone'] = phone
         order['courier'] = index
         order['Order status'] = 'Preparing'
+        order['items'] = []
+        print('Product stock')
+        print(main_menu.products_list)
+        select_products = int(input('How many products would you like to add?'))
+        for prod in range(select_products):
+            print('Product IDs')
+            for i, value in enumerate(main_menu.products_list):
+                print(i, value)
+            add_product = input('Choose a product ID to add:')
+            order['items'].append(add_product)
         main_menu.orders_list.append(order)
         orders()
     elif input2 == 3:#update an order status
@@ -39,17 +49,35 @@ def orders():
         orders()
     elif input2 == 4:#update existing order
         # PRINT orders list with its index values
+        print('Orders')
         for i, value in enumerate(main_menu.orders_list):
             print(i, value)
         # GET user input for order index value
-        index = int(input('Pick an order:'))#ensure input is enough
+        index = int(input('Pick an order:'))#ensure input is enough if i just press enter it fails
         print('Enter a value to ammend order or enter to skip to next property')
         for key in main_menu.orders_list[index]:
-            if key == 'Order status':
+            if key == 'items':
+                print('Select new items')
+                print('Product stock')
+                print(main_menu.products_list)
+                select_products = input('Enter number of products to add or enter to skip')
+                new_list = []
+                if not select_products:
+                    continue
+                else:
+                    select_products = int(select_products)
+                    for prod in range(select_products):
+                        print('Product IDs')
+                        for i, value in enumerate(main_menu.products_list):
+                            print(i, value)
+                        add_product = input('Choose a product ID to add:')
+                        new_list.append(add_product)
+                    main_menu.orders_list[index]['items'] = new_list
+            elif key == 'Order status':
                 print('Select a Order status or press enter to skip')
                 for i, value in enumerate(main_menu.order_status):
                     print(i, value)
-                index2 = input('Pick a Order Status:')
+                index2 = input('Pick an Order Status:')
                 if not index2:
                         continue
                 else:

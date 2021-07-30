@@ -11,22 +11,33 @@ def products_menu():
     elif input2 == 2:#make new products
         numb = int(input('how many products would you like to add?'))
         for x in range(numb):
-            food = input('Enter a product name:')
-            main_menu.products_list.append(food)
+            food = str(input('Enter a product name:'))
+            price = float(input('Enter a price:'))
+            product_input = {}
+            product_input['name'] = food
+            product_input['price'] = price
+            main_menu.products_list.append(product_input)
         print(main_menu.products_list)
         products_menu()
     elif input2 == 3:#replace/update a product
-        for i, product in enumerate(main_menu.products_list):
-            print(i, product)
-        index = int(input('Enter:'))
-        replace = input('what would you like to update this with ?')
-        main_menu.products_list[index] = replace
-        print(main_menu.products_list)
+        for i, value in enumerate(main_menu.products_list):
+            print(i, value)
+        # GET user input for order index value
+        index = int(input('Pick an product:'))#ensure input is enough
+        print('Enter a value to ammend order or enter to skip to next property')
+        for key in main_menu.products_list[index]:
+            print(key)
+            replace = input(f'{key}:')
+            if not replace:
+                continue
+            else:
+                main_menu.products_list[index][key] = replace
+        print(main_menu.products_list[index])
         products_menu()
     elif input2 == 4:#delete a product
         for i, product in enumerate(main_menu.products_list):
             print(i, product)
-        index = int(input('Enter the number you would like to delete:'))
+        index = int(input('Enter the number you would like to delete:'))#make sure after each delete it saves and you can delete many e.g. in one command if i delete and come back to delete again without going to main then it doesnt save deleted
         main_menu.products_list.remove(main_menu.products_list[index])
         print(main_menu.products_list)
         products_menu()

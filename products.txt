@@ -1,6 +1,1 @@
-cat
-dog
-hen
-sheep
-fish
-shrimp
+{'name': 'coke', 'price': 23.0}
