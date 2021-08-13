@@ -14,7 +14,4 @@ def test_order_status(mock_input, mock_print):
     assert mock_input.call_count == 3
     assert mock_print.call_count == 1 
     mock_print.assert_called_with([{'name': 'sajeevan', 'address': 'bur road ', 'phone': 6789998212, 'courier': 3, 'Order status': 'Cancelled'}])    
-    
-    
-    
-    
+

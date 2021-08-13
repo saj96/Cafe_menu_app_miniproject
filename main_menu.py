@@ -42,7 +42,7 @@ finally:
     orders_file.close()
 def main_menu():
     #print main menu options
-    print('-Main menu options- Enter 0 to Exit, Enter 1 for the Products Menu, Enter 2 for Courier Menu, Enter 3 for Orders')
+    print('-Main menu options- \n\t Enter 0 to Exit \n\t Enter 1 for the Products Menu \n\t Enter 2 for Courier Menu \n\t Enter 3 for Orders Menu')
 
     input1 = int(input('Enter option:'))
     if input1 == 0:
@@ -98,7 +98,7 @@ def main_menu():
         from orders import orders
         orders()
     else:
-        print('Incorrect submission please enter either 0, 1 or 2')
+        print('Incorrect submission please enter either 0, 1, 2 or 3')
         main_menu()
 
 
