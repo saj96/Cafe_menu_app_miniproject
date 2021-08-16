@@ -15,7 +15,6 @@ def products_menu():
         main_menu.main_menu() 
     elif input2 == 1:#print products
         # Load environment variables from .env file
-        clear()
         load_dotenv()
         host = os.environ.get("mysql_host")
         user = os.environ.get("mysql_user")
@@ -43,7 +42,6 @@ def products_menu():
         connection.close()
         products_menu()
     elif input2 == 2:#make new products
-        clear()
         numb = int(input('how many products would you like to add?'))
         load_dotenv()
         host = os.environ.get("mysql_host")
@@ -70,7 +68,6 @@ def products_menu():
         product_update()
     elif input2 == 4:#delete a product
         # Load environment variables from .env file
-        clear()
         load_dotenv()
         host = os.environ.get("mysql_host")
         user = os.environ.get("mysql_user")
@@ -105,6 +102,7 @@ def products_menu():
             # gets the number of rows affected by the command executed
             row_count = cursor.fetchone()
             check = row_count[0]
+        cursor.execute("UPDATE products_orders SET products = NULL WHERE products = %s", (index))
         cursor.execute("DELETE FROM products WHERE product_id = %s", (index))
         connection.commit()
         cursor.close()

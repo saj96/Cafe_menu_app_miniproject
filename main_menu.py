@@ -1,5 +1,6 @@
 #menu
 import csv
+import os
 #when it goes to main menu and it reads lines again and appends it to the products list it appends
 products_list = []
 courier_list = []
@@ -42,6 +43,8 @@ finally:
     orders_file.close()
 def main_menu():
     #print main menu options
+    clear = lambda: os.system('cls')
+    print("Welcome to Sphinx cafe!\n\t")
     print('-Main menu options- \n\t Enter 0 to Exit \n\t Enter 1 for the Products Menu \n\t Enter 2 for Courier Menu \n\t Enter 3 for Orders Menu')
 
     input1 = int(input('Enter option:'))
@@ -88,13 +91,18 @@ def main_menu():
                 print('error occured:' + str(e))       
             finally:
                 orders_file.close() 
+        clear()
+        print('Thank you for using the Sphinx cafe app')
     elif input1 == 1:
+        clear()
         from products_menu import products_menu
         products_menu()
     elif input1 == 2:
+        clear()
         from courier_menu import courier_menu
         courier_menu()
     elif input1 == 3:
+        clear()
         from orders import orders
         orders()
     else:

@@ -11,7 +11,6 @@ def courier_menu():
     if input2 == 0:
         main_menu.main_menu() 
     elif input2 == 1:#print couriers
-        clear()
         load_dotenv()
         host = os.environ.get("mysql_host")
         user = os.environ.get("mysql_user")
@@ -38,7 +37,6 @@ def courier_menu():
         connection.close()
         courier_menu()
     elif input2 == 2:#make new courier
-        clear()
         numb = int(input('how many couriers would you like to add?'))
         load_dotenv()
         host = os.environ.get("mysql_host")
@@ -62,7 +60,6 @@ def courier_menu():
         connection.close()
         courier_menu()
     elif input2 == 3:#replace/update a courier
-        clear()
         load_dotenv()
         host = os.environ.get("mysql_host")
         user = os.environ.get("mysql_user")
@@ -117,7 +114,6 @@ def courier_menu():
         connection.close()
         courier_menu()
     elif input2 == 4:#delete a courier
-        clear()
         load_dotenv()
         host = os.environ.get("mysql_host")
         user = os.environ.get("mysql_user")
@@ -152,6 +148,7 @@ def courier_menu():
             # gets the number of rows affected by the command executed
             row_count = cursor.fetchone()
             check = row_count[0]
+        cursor.execute("UPDATE courier_order SET courier_id = NULL WHERE courier_id = %s", (index))
         cursor.execute("DELETE FROM courier WHERE courier_id = %s", (index))
         connection.commit()
         cursor.close()
